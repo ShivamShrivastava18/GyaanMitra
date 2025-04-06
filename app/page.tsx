@@ -59,69 +59,79 @@ export default function Home() {
                   <BookOpen className="h-8 w-8 text-blue-600" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Upload Curriculum</h3>
-                <p className="text-gray-600">Teachers upload their curriculum or create it directly in the platform</p>
+                <p className="text-gray-600 dark:text-gray-300">
+                  Teachers upload their curriculum or create it directly in the platform
+                </p>
               </div>
               <div className="flex flex-col items-center text-center">
                 <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mb-4">
                   <FileText className="h-8 w-8 text-green-600" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Generate Quizzes</h3>
-                <p className="text-gray-600">AI extracts topics and generates quizzes in multiple languages</p>
+                <p className="text-gray-600 dark:text-gray-300">
+                  AI extracts topics and generates quizzes in multiple languages
+                </p>
               </div>
               <div className="flex flex-col items-center text-center">
                 <div className="w-16 h-16 rounded-full bg-yellow-100 flex items-center justify-center mb-4">
                   <CheckCircle className="h-8 w-8 text-yellow-600" />
                 </div>
                 <h3 className="text-xl font-semibold mb-2">Track Progress</h3>
-                <p className="text-gray-600">Students take quizzes and teachers track their performance</p>
+                <p className="text-gray-600 dark:text-gray-300">
+                  Students take quizzes and teachers track their performance
+                </p>
               </div>
             </div>
           </div>
         </section>
 
         <section className="py-12 md:py-24 bg-gray-50">
-          <div className="container mx-auto px-4 md:px-6">
-            <div className="grid md:grid-cols-2 gap-12 items-center">
-              <div>
-                <h2 className="text-2xl md:text-3xl font-bold mb-4">For Teachers</h2>
-                <p className="text-gray-600 mb-6">
-                  GyaanMitra helps teachers create engaging quizzes without the hassle. Upload your curriculum and let
-                  AI do the heavy lifting.
-                </p>
-                <ul className="space-y-2">
-                  <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
-                    <span>Automatically extract topics from your curriculum</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
-                    <span>Generate quizzes in multiple languages</span>
-                  </li>
-                  <li className="flex items-start">
-                    <CheckCircle className="h-5 w-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
-                    <span>Track student performance with detailed analytics</span>
-                  </li>
-                </ul>
-              </div>
-              <div className="rounded-lg overflow-hidden shadow-lg">
-                <Image
-                  src="/placeholder.svg?height=400&width=600&text=Teacher+Dashboard"
-                  alt="Teacher Dashboard"
-                  width={600}
-                  height={400}
-                  className="w-full h-auto"
-                />
-              </div>
-            </div>
-          </div>
-        </section>
+  <div className="container mx-auto px-4 md:px-6">
+    <div className="grid md:grid-cols-2 gap-12 items-center">
+      <div>
+        <h2 className="text-2xl md:text-3xl font-bold mb-4 text-gray-900">For Teachers</h2>
+        <p className="text-gray-800 mb-6">
+          GyaanMitra helps teachers create engaging quizzes without the hassle. Upload your curriculum and let
+          AI do the heavy lifting.
+        </p>
+        <ul className="space-y-2">
+          <li className="flex items-start">
+            <CheckCircle className="h-5 w-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+            <span className="text-gray-800">
+              Automatically extract topics from your curriculum
+            </span>
+          </li>
+          <li className="flex items-start">
+            <CheckCircle className="h-5 w-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+            <span className="text-gray-800">Generate quizzes in multiple languages</span>
+          </li>
+          <li className="flex items-start">
+            <CheckCircle className="h-5 w-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
+            <span className="text-gray-800">
+              Track student performance with detailed analytics
+            </span>
+          </li>
+        </ul>
+      </div>
+      <div className="rounded-lg overflow-hidden shadow-lg">
+        <Image
+          src="https://i.postimg.cc/5jW9vNZG/image.png"
+          alt="Teacher Dashboard"
+          width={600}
+          height={400}
+          className="w-full h-auto"
+        />
+      </div>
+    </div>
+  </div>
+</section>
 
         <section className="py-12 md:py-24">
           <div className="container mx-auto px-4 md:px-6">
             <div className="grid md:grid-cols-2 gap-12 items-center">
               <div className="order-2 md:order-1 rounded-lg overflow-hidden shadow-lg">
                 <Image
-                  src="/placeholder.svg?height=400&width=600&text=Student+Experience"
+                  src="https://i.postimg.cc/5NMsHF6s/image.png"
                   alt="Student Experience"
                   width={600}
                   height={400}
@@ -130,22 +140,24 @@ export default function Home() {
               </div>
               <div className="order-1 md:order-2">
                 <h2 className="text-2xl md:text-3xl font-bold mb-4">For Students</h2>
-                <p className="text-gray-600 mb-6">
+                <p className="text-gray-600 dark:text-gray-300 mb-6">
                   Students can access personalized quizzes, track their progress, and improve their understanding of the
                   curriculum.
                 </p>
                 <ul className="space-y-2">
                   <li className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
-                    <span>Take quizzes in your preferred language</span>
+                    <span className="text-gray-700 dark:text-gray-300">Take quizzes in your preferred language</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
-                    <span>Get immediate feedback on your performance</span>
+                    <span className="text-gray-700 dark:text-gray-300">Get immediate feedback on your performance</span>
                   </li>
                   <li className="flex items-start">
                     <CheckCircle className="h-5 w-5 text-green-600 mr-2 flex-shrink-0 mt-0.5" />
-                    <span>Review your answers and learn from mistakes</span>
+                    <span className="text-gray-700 dark:text-gray-300">
+                      Review your answers and learn from mistakes
+                    </span>
                   </li>
                 </ul>
               </div>

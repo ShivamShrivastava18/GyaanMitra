@@ -136,25 +136,29 @@ export async function extractTopicsFromImage(imageBase64: string, cacheKey = "")
 }
 
 // Generate quiz questions
-export async function generateQuiz(content: string, numQuestions = 5, language = "English"): Promise<any[]> {
+export async function generateQuiz({
+  topics,
+  language,
+  numberOfQuestions,
+}: { topics: string[]; language: string; numberOfQuestions: number }): Promise<any[]> {
   try {
     const model = genAI.getGenerativeModel({ model: "gemini-1.5-pro" })
 
     const prompt = `
-      You are an educational quiz generator. Create ${numQuestions} multiple-choice questions based on the following content.
+      You are an educational quiz generator. Create ${numberOfQuestions} multiple-choice questions based on the following topics.
       Each question should have 4 options with exactly one correct answer.
       
-      Content:
-      ${content}
+      Topics:
+      ${topics.join(", ")}
       
-      Language: ${language}
+      IMPORTANT: The quiz MUST be in ${language} language. Translate all questions, options, and explanations to ${language}.
       
       Format your response as a JSON array of objects, where each object has the following structure:
       {
-        "question": "Question text",
-        "options": ["Option A", "Option B", "Option C", "Option D"],
-        "correctOptionIndex": 0, // Index of the correct option (0-3)
-        "explanation": "Brief explanation of the correct answer"
+        "question": "Question text in ${language}",
+        "options": ["Option A in ${language}", "Option B in ${language}", "Option C in ${language}", "Option D in ${language}"],
+        "correctAnswer": 0, // Index of the correct option (0-3)
+        "explanation": "Brief explanation of the correct answer in ${language}"
       }
     `
 

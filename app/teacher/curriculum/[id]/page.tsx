@@ -322,8 +322,10 @@ function CurriculumContent({ params }: { params: { id: string } }) {
                           return (
                             <div
                               key={topic.id}
-                              className={`flex items-center justify-between p-3 border rounded-md hover:bg-gray-50 transition-colors topic-item ${
-                                isSelected ? "bg-blue-50 border-blue-200 selected" : ""
+                              className={`flex items-center justify-between p-3 border rounded-md hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors topic-item ${
+                                isSelected
+                                  ? "bg-blue-50 border-blue-200 dark:bg-blue-900/30 dark:border-blue-800 selected"
+                                  : ""
                               }`}
                             >
                               <div className="flex items-center">
@@ -336,8 +338,8 @@ function CurriculumContent({ params }: { params: { id: string } }) {
                                   className="mr-3"
                                 />
                                 <div>
-                                  <h4 className="font-medium">{topic.title}</h4>
-                                  <p className="text-sm text-gray-500">{topic.description}</p>
+                                  <h4 className="font-medium dark:text-white">{topic.title}</h4>
+                                  <p className="text-sm text-gray-500 dark:text-gray-400">{topic.description}</p>
                                 </div>
                               </div>
                             </div>
@@ -371,17 +373,22 @@ function CurriculumContent({ params }: { params: { id: string } }) {
                         })
 
                         return (
-                          <div key={quiz.id} className="border rounded-md p-4 hover:bg-gray-50 transition-colors">
+                          <div
+                            key={quiz.id}
+                            className="border rounded-md p-4 hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors"
+                          >
                             <div className="flex justify-between items-start">
                               <div>
                                 <h3 className="font-medium text-lg">{quiz.title}</h3>
-                                <p className="text-sm text-gray-500">{quiz.description}</p>
+                                <p className="text-sm text-gray-500 dark:text-gray-400">{quiz.description}</p>
                                 <div className="flex items-center mt-2 space-x-4">
-                                  <span className="text-xs bg-blue-100 text-blue-800 px-2 py-1 rounded-full">
+                                  <span className="text-xs bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-100 px-2 py-1 rounded-full">
                                     {quiz.language}
                                   </span>
-                                  <span className="text-xs text-gray-500">{quiz.questions.length} questions</span>
-                                  <span className="text-xs text-gray-500">
+                                  <span className="text-xs text-gray-500 dark:text-gray-400">
+                                    {quiz.questions.length} questions
+                                  </span>
+                                  <span className="text-xs text-gray-500 dark:text-gray-400">
                                     {quiz.assignedTo.length} students assigned
                                   </span>
                                 </div>
@@ -398,9 +405,11 @@ function CurriculumContent({ params }: { params: { id: string } }) {
                     </div>
                   ) : (
                     <div className="text-center p-8">
-                      <BookOpen className="h-12 w-12 mx-auto text-gray-300 mb-4" />
+                      <BookOpen className="h-12 w-12 mx-auto text-gray-300 dark:text-gray-600 mb-4" />
                       <h3 className="text-lg font-medium mb-2">No quizzes yet</h3>
-                      <p className="text-sm text-gray-500 mb-4">Generate quizzes from topics in the Modules tab</p>
+                      <p className="text-sm text-gray-500 dark:text-gray-400 mb-4">
+                        Generate quizzes from topics in the Modules tab
+                      </p>
                     </div>
                   )}
                 </CardContent>
@@ -409,7 +418,7 @@ function CurriculumContent({ params }: { params: { id: string } }) {
           </Tabs>
 
           <Dialog open={openDialog} onOpenChange={setOpenDialog}>
-            <DialogContent className="max-w-2xl">
+            <DialogContent className="max-w-2xl max-h-[90vh] overflow-y-auto">
               <DialogHeader>
                 <DialogTitle>Generate Quiz for Selected Topics</DialogTitle>
                 <DialogDescription>
@@ -525,39 +534,41 @@ function CurriculumContent({ params }: { params: { id: string } }) {
                 {generatedQuestions.length > 0 ? (
                   <div className="space-y-2">
                     <Label>Generated Questions</Label>
-                    <Accordion type="single" collapsible className="w-full">
-                      {generatedQuestions.map((question, index) => (
-                        <AccordionItem key={question.id} value={question.id}>
-                          <AccordionTrigger className="text-left">
-                            {index + 1}. {question.question}
-                          </AccordionTrigger>
-                          <AccordionContent>
-                            <div className="space-y-2 pl-6">
-                              {question.options.map((option, optionIndex) => (
-                                <div
-                                  key={optionIndex}
-                                  className={`p-2 rounded-md ${
-                                    optionIndex === question.correctAnswer
-                                      ? "bg-green-50 border border-green-200"
-                                      : "bg-gray-50"
-                                  }`}
-                                >
-                                  {String.fromCharCode(65 + optionIndex)}. {option}
-                                  {optionIndex === question.correctAnswer && (
-                                    <span className="ml-2 text-green-600 text-sm">(Correct)</span>
-                                  )}
-                                </div>
-                              ))}
-                              {question.explanation && (
-                                <div className="mt-2 text-sm text-gray-600 bg-blue-50 p-2 rounded-md">
-                                  <strong>Explanation:</strong> {question.explanation}
-                                </div>
-                              )}
-                            </div>
-                          </AccordionContent>
-                        </AccordionItem>
-                      ))}
-                    </Accordion>
+                    <div className="max-h-60 overflow-y-auto pr-2">
+                      <Accordion type="single" collapsible className="w-full">
+                        {generatedQuestions.map((question, index) => (
+                          <AccordionItem key={question.id} value={question.id}>
+                            <AccordionTrigger className="text-left">
+                              {index + 1}. {question.question}
+                            </AccordionTrigger>
+                            <AccordionContent>
+                              <div className="space-y-2 pl-6">
+                                {question.options.map((option, optionIndex) => (
+                                  <div
+                                    key={optionIndex}
+                                    className={`p-2 rounded-md ${
+                                      optionIndex === question.correctAnswer
+                                        ? "bg-green-50 border border-green-200 dark:bg-green-900/30 dark:border-green-800"
+                                        : "bg-gray-50 dark:bg-gray-800"
+                                    }`}
+                                  >
+                                    {String.fromCharCode(65 + optionIndex)}. {option}
+                                    {optionIndex === question.correctAnswer && (
+                                      <span className="ml-2 text-green-600 dark:text-green-400 text-sm">(Correct)</span>
+                                    )}
+                                  </div>
+                                ))}
+                                {question.explanation && (
+                                  <div className="mt-2 text-sm text-gray-600 dark:text-gray-300 bg-blue-50 dark:bg-blue-900/30 p-2 rounded-md">
+                                    <strong>Explanation:</strong> {question.explanation}
+                                  </div>
+                                )}
+                              </div>
+                            </AccordionContent>
+                          </AccordionItem>
+                        ))}
+                      </Accordion>
+                    </div>
                   </div>
                 ) : (
                   <Button onClick={handleGenerateQuiz} disabled={generatingQuiz} className="w-full">
