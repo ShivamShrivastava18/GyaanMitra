@@ -6,7 +6,7 @@ A comprehensive educational platform for teachers and students
 
 ## Overview
 
-**GyaanMitra** ("Knowledge Friend" in Hindi) is an AI-powered educational platform designed to bridge the gap between teachers and students. The platform enables teachers to create customized quizzes, manage curriculum, and track student progress, while students can take quizzes, view their results, and manage their assignments.
+**GyaanMitra** is an AI-powered educational platform designed to bridge the gap between teachers and students. The platform enables teachers to create customized quizzes, manage curriculum, and track student progress, while students can take quizzes, view their results, and manage their assignments.
 
 ---
 
