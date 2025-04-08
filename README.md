@@ -1,6 +1,5 @@
 # GyaanMitra Quiz Platform
 
-Link: https://gyaan-mitra-dta5fc.vercel.app
 
 A comprehensive educational platform for teachers and students
 
