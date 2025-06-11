@@ -1,7 +1,8 @@
 # GyaanMitra Quiz Platform
 
 
-A comprehensive educational platform for teachers and students
+A comprehensive educational platform for teachers and students.
+Register using any mail ID and then login using the same ID to access the website.
 
 ## Overview
 
